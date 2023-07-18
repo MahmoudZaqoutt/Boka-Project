@@ -17,18 +17,15 @@ const Topheader = () => {
       </div>
 
       <div>
-        <ul className="flex gap-7 text-sm mr-12	">
+        <ul className="flex gap-x-6 text-sm mr-12	">
           <li>
-            {" "}
             <Link to={""}>For Business </Link>
           </li>
-          <li>|</li>
-          <li>
+          <li className=" h-full border-l-2 pl-7 border-black">
             <Link to={""}>Help</Link>
           </li>
-          <li>|</li>
 
-          <li>
+          <li className=" h-full border-l-2 pl-7 border-black">
             <DropDownList
               title="EN"
               options={["EN", "AR"]}
