@@ -1,10 +1,15 @@
 import React from "react";
+import Topheader from "./components/Topheader/Topheader";
+import Header from "./components/Header/Header";
+import HeroSection from "./components/heroSection/heroSection";
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline text-red-600 bg-black ">
-      Simple React Typescript Tailwind Sample
-    </h1>
+    <div>
+      <Topheader />
+      <Header />;
+      <HeroSection />
+    </div>
   );
 }
 
