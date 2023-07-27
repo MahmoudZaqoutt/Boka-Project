@@ -4,8 +4,8 @@ import { FiFacebook } from "react-icons/fi";
 import { BiSolidPhoneCall } from "react-icons/bi";
 
 export const HEADER_ICONS = [
-  <BsInstagram />,
-  <LiaYoutube />,
-  <FiFacebook />,
-  <BiSolidPhoneCall />,
+  { content: <BsInstagram />, href: "/" },
+  { content: <LiaYoutube />, href: "/" },
+  { content: <FiFacebook />, href: "/" },
+  { content: <BiSolidPhoneCall />, href: "/" },
 ];

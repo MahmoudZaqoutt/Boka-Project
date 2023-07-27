@@ -1,21 +1,19 @@
-import React from "react";
 // @ts-ignore
 import LogoImage from "../../assets/Logo.png";
 import { Body } from "../Typography";
-import { Link, NavLink } from "react-router-dom";
-const Logo = () => {
+import { Link } from "react-router-dom";
+
+import { IPropsButton } from "../../interfaces/props/IPropsButton";
+
+const Logo = (props: IPropsButton) => {
   return (
-    <div className="ml-[40px] flex ">
-      <Link to={"/"}>
-        <img src={LogoImage} alt="LogoImage" />
-      </Link>
-      <Link to={"/"}>
-        <Body
-          classnameContent="w-[84.94px] h-[25.58px] font-semibold font-sans text-3xl"
-          content="Boka"
-        />
-      </Link>
-    </div>
+    <Link to={"/"} className={props.classname}>
+      <img src={LogoImage} alt="LogoImage" />
+      <Body
+        classnameContent="w-[84.94px] h-[25.58px] font-semibold font-sans text-3xl"
+        content="Boka"
+      />
+    </Link>
   );
 };
 

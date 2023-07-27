@@ -1,40 +1,21 @@
-import React from "react";
-import { HEADER_ICONS } from "../../constants/HeaderIcons";
-import { Link } from "react-router-dom";
-import DropDownList from "../DropDownList/DropDownList";
+import { HEADER_ICONS } from "../../constants/HEADER_ICONS";
+import { List } from "../Shared/List/List";
+import { HEADER_LINKS } from "../../constants/HEADER_LINKS";
 
 const Topheader = () => {
   return (
-    <div className="flex justify-between h-[40px] bg-slate-50 align-middle p-2 border-b-current">
-      <div>
-        <ul className="flex gap-x-5 ml-12 ">
-          {HEADER_ICONS.map((icon) => (
-            <li>
-              <Link to={""}>{icon}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <ul className="flex gap-x-6 text-sm mr-12	">
-          <li>
-            <Link to={""}>For Business </Link>
-          </li>
-          <li className=" h-full border-l-2 pl-7 border-black">
-            <Link to={""}>Help</Link>
-          </li>
-
-          <li className=" h-full border-l-2 pl-7 border-black">
-            <DropDownList
-              title="EN"
-              options={["EN", "AR"]}
-              className="bg-slate-50 cursor-pointer hover:bg-white"
-            />
-          </li>
-        </ul>
-      </div>
-    </div>
+    <nav className=" md:flex hidden justify-between h-[40px]  align-middle p-2 border-b-current  text-white ">
+      <List
+        classNameOfLI="hover:text-orange-400 ease-in-out duration-150 text-black"
+        className="flex gap-x-5 ml-12 "
+        options={HEADER_ICONS}
+      />
+      <List
+        classNameOfLI="hover:text-orange-400 ease-in-out duration-150 text-black pl-6"
+        className="flex gap-x-6 text-sm mr-12"
+        options={HEADER_LINKS}
+      />
+    </nav>
   );
 };
 

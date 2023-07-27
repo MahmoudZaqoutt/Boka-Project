@@ -25,3 +25,16 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.child {
+  width: calc(120px) !important;
+}
+/* .childCard {
+  width: calc(160px) !important;
+} */
+.child img {
+  margin-bottom: 20px;
+}
+
+.splide__pagination {
+  display: none;
+}
