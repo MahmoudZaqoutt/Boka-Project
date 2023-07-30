@@ -1,6 +1,8 @@
 export interface IPropsDropDownList {
-  title: string;
+  title?: string;
   picUrl?: any;
   className?: string;
-  options: string[];
+  options: any[];
+  titleClassName?: string;
+  onChange?: any;
 }

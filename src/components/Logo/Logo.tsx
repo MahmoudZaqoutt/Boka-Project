@@ -10,7 +10,7 @@ const Logo = (props: IPropsButton) => {
     <Link to={"/"} className={props.classname}>
       <img src={LogoImage} alt="LogoImage" />
       <Body
-        classnameContent="w-[84.94px] h-[25.58px] font-semibold font-sans text-3xl"
+        classnameContent="w-[84.94px] h-[25.58px] font-semibold  text-3xl"
         content="Boka"
       />
     </Link>

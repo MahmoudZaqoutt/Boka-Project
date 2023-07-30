@@ -1,9 +1,7 @@
-import React from "react";
-import { H1 } from "../Typography";
+import { useEffect, useState } from "react";
+import { Body } from "../Typography";
 import Card from "../Shared/Card/Card";
 import { IPropsSlide } from "../../interfaces/props/IPropsSlide";
-// @ts-ignore
-import img from "../../assets/Rectangle13.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -12,93 +10,139 @@ import Button from "../Shared/Button/button";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Container from "../Shared/Container/Container";
-import { CARD_CONTENT } from "../../constants/CARD_CONTENT";
+import axios from "axios";
 
 const SlidesOfSections = (props: IPropsSlide) => {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState("");
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+  const handleChange = (swiper: any) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get(
+          `  https://api.dev.boka.co/business-management/businesses?limit=10&categoryId=${props.categoryId}`
+        );
+        setData(res.data.data);
+      } catch (error: any) {
+        setError(error.message);
+        console.log(error.message);
+      }
+    })();
+  }, [props.categoryId]);
+
   return (
     <Container>
-      <div>
-        <div className="flex justify-between  items-center mt-[24px] mb-[24px]">
-          <H1
-            content={props.content ? props.content : ""}
-            classnameContent="text-4xl	font-bold	 "
-          />
+      {error ? (
+        <div className="w-full text-center text-4xl text-red-500 font-bold">
+          {error}...
+        </div>
+      ) : (
+        <div>
+          <div className="flex justify-between  items-center mt-[24px] mb-[24px]">
+            <Body
+              content={props.content ? props.content : ""}
+              classnameContent="text-4xl	font-bold	 "
+            />
 
-          <div className="flex items-center gap-4">
-            <Link
-              to={""}
-              className=" text-orange-400 hover:bg-orange-100 ease-in-out duration-200 rounded-xl font-semibold"
+            <div className="flex items-center gap-4">
+              <Link
+                to={""}
+                className=" text-orange-400 hover:bg-orange-100 ease-in-out duration-200 rounded-xl font-semibold"
+              >
+                View all
+              </Link>
+              {isBeginning ? (
+                <Button
+                  label={<AiOutlineLeft className="w-7 h-7" />}
+                  classname={`prev${props.id} hidden md:block text-[#ccc3c3] cursor-not-allowed`}
+                />
+              ) : (
+                <Button
+                  label={<AiOutlineLeft className="w-7 h-7" />}
+                  classname={`prev${props.id} hidden md:block`}
+                />
+              )}
+
+              {isEnd ? (
+                <Button
+                  label={<AiOutlineRight className="w-7 h-7" />}
+                  classname={`next${props.id} hidden md:block text-[#ccc3c3] cursor-not-allowed`}
+                />
+              ) : (
+                <Button
+                  label={<AiOutlineRight className="w-7 h-7" />}
+                  classname={`next${props.id} hidden md:block`}
+                />
+              )}
+            </div>
+          </div>
+
+          <div>
+            <Swiper
+              onSlideChange={handleChange}
+              scrollbar={{ draggable: true }}
+              navigation={{
+                nextEl: `.next${props.id}`,
+                prevEl: `.prev${props.id}`,
+                enabled: true,
+              }}
+              modules={[Navigation]}
+              slidesPerView={4}
+              slidesPerGroup={1}
+              spaceBetween={30}
+              breakpoints={{
+                100: {
+                  slidesPerView: 1,
+                  slidesPerGroup: 1,
+                },
+                430: {
+                  slidesPerView: 2,
+                  slidesPerGroup: 1,
+                  spaceBetween: 20,
+                },
+                537: {
+                  slidesPerView: 2,
+                  slidesPerGroup: 1,
+                  spaceBetween: 20,
+                },
+                760: {
+                  slidesPerView: 2,
+                  slidesPerGroup: 1,
+                  spaceBetween: 20,
+                },
+                850: {
+                  slidesPerView: 3,
+                  slidesPerGroup: 1,
+                  spaceBetween: 10,
+                },
+                1250: {
+                  slidesPerView: 4,
+                  slidesPerGroup: 1,
+                  spaceBetween: 20,
+                },
+              }}
             >
-              View all
-            </Link>
-            <Button
-              label={<AiOutlineLeft className="w-7 h-7" />}
-              classname={`prev${props.id} hidden md:block`}
-            />
-            <Button
-              label={<AiOutlineRight className="w-7 h-7" />}
-              classname={`next${props.id} hidden md:block`}
-            />
+              {data.map((data: any) => (
+                <SwiperSlide key={data.id}>
+                  <Card
+                    name={data.nameEn}
+                    id={data.id + (props.id ? props.id : 100)}
+                    Images={data.businessImages}
+                    services={data.services}
+                    rating={data.rating}
+                    address={data.address[0].formatted}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
-
-        <div>
-          <Swiper
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
-            scrollbar={{ draggable: true }}
-            navigation={{
-              nextEl: `.next${props.id}`,
-              prevEl: `.prev${props.id}`,
-              enabled: true,
-            }}
-            modules={[Navigation]}
-            slidesPerView={4}
-            slidesPerGroup={1}
-            spaceBetween={30}
-            breakpoints={{
-              100: {
-                slidesPerView: 1,
-                slidesPerGroup: 1,
-              },
-              350: {
-                slidesPerView: 2,
-                slidesPerGroup: 1,
-                spaceBetween: 20,
-              },
-              537: {
-                slidesPerView: 2,
-                slidesPerGroup: 1,
-                spaceBetween: 20,
-              },
-              760: {
-                slidesPerView: 2,
-                slidesPerGroup: 1,
-                spaceBetween: 20,
-              },
-              900: {
-                slidesPerView: 3,
-                slidesPerGroup: 1,
-                spaceBetween: 20,
-              },
-              1250: {
-                slidesPerView: 4,
-                slidesPerGroup: 1,
-                spaceBetween: 20,
-              },
-            }}
-          >
-            {CARD_CONTENT.map((card) => (
-              <SwiperSlide>
-                <Card
-                  id={card.id + (props.id ? props.id : 100)}
-                  Images={card.images}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </div>
+      )}
     </Container>
   );
 };

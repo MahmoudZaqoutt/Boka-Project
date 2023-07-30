@@ -3,32 +3,47 @@ import CommentsOfCustomorCard from "./CommentsOfCustomorCard/CommentsOfCustomorC
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-// import required modules
 import { Navigation } from "swiper";
 import Button from "../Shared/Button/button";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { HiArrowNarrowLeft } from "react-icons/hi";
 import Container from "../Shared/Container/Container";
 import { COMMENTS } from "../../constants/COMMENTS";
+import { useState } from "react";
 
 const CommentsOfCustomor = () => {
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+  const handleChange = (swiper: any) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
   return (
     <Container>
-      <div className="mb-[80px]">
+      <section className="mb-[80px]">
         <Body
           content="Our happy customers say about us"
           classnameContent="font-bold	text-4xl text-center text-[#02323D] mb-[45px] "
         />
-        <div className="flex  ">
-          <Button
-            label={
-              <HiArrowNarrowLeft className="text-[#FF914D] bg-[#F9F9F9] drop-shadow-lg w-9 h-9 rounded-full " />
-            }
-            classname="prev"
-          />
+        <div className="flex">
+          {isBeginning ? (
+            <Button
+              label={
+                <HiArrowNarrowLeft className="text-[#cfd9db] bg-[#F9F9F9] drop-shadow-lg w-9 h-9 rounded-full " />
+              }
+              classname="prev cursor-not-allowed"
+            />
+          ) : (
+            <Button
+              label={
+                <HiArrowNarrowLeft className="text-[#FF914D] bg-[#F9F9F9] drop-shadow-lg w-9 h-9 rounded-full " />
+              }
+              classname="prev"
+            />
+          )}
+
           <Swiper
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
+            onSlideChange={handleChange}
             scrollbar={{ draggable: true }}
             navigation={{
               nextEl: `.next`,
@@ -72,20 +87,29 @@ const CommentsOfCustomor = () => {
             }}
           >
             {COMMENTS.map((comment) => (
-              <SwiperSlide>
-                <CommentsOfCustomorCard comment={comment} />
+              <SwiperSlide key={comment.id}>
+                <CommentsOfCustomorCard comment={comment.comment} />
               </SwiperSlide>
             ))}
           </Swiper>
 
-          <Button
-            label={
-              <HiArrowNarrowRight className="text-[#FF914D]  bg-[#F9F9F9] drop-shadow-lg w-9 h-9 rounded-full " />
-            }
-            classname="next"
-          />
+          {isEnd ? (
+            <Button
+              label={
+                <HiArrowNarrowRight className="text-[#cfd9db] bg-[#F9F9F9] drop-shadow-lg w-9 h-9 rounded-full " />
+              }
+              classname="prev cursor-not-allowed"
+            />
+          ) : (
+            <Button
+              label={
+                <HiArrowNarrowRight className="text-[#FF914D]  bg-[#F9F9F9] drop-shadow-lg w-9 h-9 rounded-full " />
+              }
+              classname="next"
+            />
+          )}
         </div>
-      </div>
+      </section>
     </Container>
   );
 };

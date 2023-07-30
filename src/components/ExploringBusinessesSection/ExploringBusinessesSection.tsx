@@ -3,9 +3,13 @@ import SlidesOfSections from "../SlidesOfSections/SlidesOfSections";
 
 const ExploringBusinessesSection = () => {
   return (
-    <div className="mt-[80px]">
-      <SlidesOfSections id={5} content="Exploring Businesses" />
-    </div>
+    <section className="mt-[80px]">
+      <SlidesOfSections
+        categoryId={3}
+        id={500}
+        content="Exploring Businesses"
+      />
+    </section>
   );
 };
 

@@ -12,7 +12,7 @@ export const List = (props: IPropsTopHeaderList) => {
       )}
       <ul className={props.className}>
         {props.options.map((option) => (
-          <Link to={option.href}>
+          <Link to={option.href} key={option.id}>
             <li className={props.classNameOfLI}>{option.content}</li>
           </Link>
         ))}

@@ -1,18 +1,6 @@
 export const FOOTER_LINKS = [
-  {
-    content: "Privacy Policy",
-    href: "/",
-  },
-  {
-    content: "Terms of Use",
-    href: "/",
-  },
-  {
-    content: "Cookies and Interest-Based Ads",
-    href: "/",
-  },
-  {
-    content: "Do Not Sell",
-    href: "/",
-  },
+  { id: 1, content: "Privacy Policy", href: "/" },
+  { id: 2, content: "Terms of Use", href: "/" },
+  { id: 3, content: "Cookies and Interest-Based Ads", href: "/" },
+  { id: 4, content: "Do Not Sell", href: "/" },
 ];

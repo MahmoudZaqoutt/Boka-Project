@@ -14,15 +14,15 @@ import { FOOTER_LINKS } from "../../constants/FOOTER_LINKS";
 
 const Footer = () => {
   return (
-    <div className="bg-[#F9F9F9] ">
+    <section className="bg-[#F9F9F9] ">
       <Container>
         <div className="xl:h-[608px] h-auto bg-[#F9F9F9] mt-[80px]">
           <div className="pt-[80px] flex flex-col gap-14  sm:gap-20  sm:grid sm:grid-cols-2  xl:grid-cols-2  xl:grid-cols-2 ">
             <div>
-              <Logo classname="flex " />
+              <Logo classname="flex gap-1" />
               <Body
                 content="Boka is the new favorite online destination for beauty & wellness bookings, for both professionals and clients. On Boka, providers get a chance to connect with new clients, showcase their work, and streamline their business. Clients can discover their new favorite providers, get inspired, find last-minute bookings, and simply schedule all their beauty & wellness appointments for the upcoming month."
-                classnameContent="text-[#6B7C80]"
+                classnameContent="text-[#6B7C80] mt-2"
               />
             </div>
             <div className="  grid grid-cols-2 gap-5 xl:grid-cols-4 sm:grid-cols-2">
@@ -30,7 +30,7 @@ const Footer = () => {
                 <List
                   options={DISCOVER_ICONS}
                   title="Discover"
-                  classNameOfLI="text-[#6B7C80] hover:text-orange-400 ease-in-out duration-150 "
+                  classNameOfLI="text-[#6B7C80] hover:underline ease-in-out duration-150 "
                 />
               </div>
 
@@ -38,12 +38,12 @@ const Footer = () => {
                 <List
                   options={OPENTABLE}
                   title="Opentable"
-                  classNameOfLI="text-[#6B7C80] hover:text-orange-400 ease-in-out duration-150 "
+                  classNameOfLI="text-[#6B7C80] hover:underline ease-in-out duration-150 "
                 />
                 <List
                   options={MORE}
                   title="More"
-                  classNameOfLI="text-[#6B7C80] hover:text-orange-400 ease-in-out duration-150 "
+                  classNameOfLI="text-[#6B7C80] hover:underline ease-in-out duration-150 "
                 />
               </div>
 
@@ -51,14 +51,14 @@ const Footer = () => {
                 <List
                   options={OUR_SITES}
                   title="Our Sites"
-                  classNameOfLI="text-[#6B7C80] hover:text-orange-400 ease-in-out duration-150 "
+                  classNameOfLI="text-[#6B7C80] hover:underline ease-in-out duration-150 "
                 />
               </div>
               <div className="flex flex-col gap-5">
                 <List
                   options={BUSINESSES}
                   title="Businesses"
-                  classNameOfLI="text-[#6B7C80] hover:text-orange-400 ease-in-out duration-150 "
+                  classNameOfLI="text-[#6B7C80] hover:underline ease-in-out duration-150 "
                 />
                 <List
                   options={JOIN_US_ON}
@@ -74,7 +74,7 @@ const Footer = () => {
               <List
                 options={FOOTER_LINKS}
                 className="flex gap-9"
-                classNameOfLI="text-[#6B7C80] hover:text-orange-400 ease-in-out duration-150 "
+                classNameOfLI="text-[#6B7C80] hover:underline ease-in-out duration-150 "
               />
             </div>
 
@@ -93,7 +93,7 @@ const Footer = () => {
           </div>
         </div>
       </Container>
-    </div>
+    </section>
   );
 };
 

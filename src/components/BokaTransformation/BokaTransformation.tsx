@@ -10,7 +10,7 @@ import PersonDetails from "../Shared/PersonDetails/PersonDetails";
 import Container from "../Shared/Container/Container";
 const BokaTransformation = () => {
   return (
-    <div className="bg-[#FFFAF8]">
+    <section className="bg-[#FFFAF8]">
       <Container>
         <div className="xl:h-[700px] h-[800px]  pb-44 mt-[80px]  ">
           <div className="flex justify-between items-center">
@@ -25,7 +25,7 @@ const BokaTransformation = () => {
             />
           </div>
 
-          <div className="h-[100%]  flex xl:flex-row  flex-col items-center xl:justify-between xl:items-center">
+          <div className="h-full  flex xl:flex-row  flex-col items-center xl:justify-between xl:items-center">
             <ImgComparisonSlider className="xl:w-[67%] w-[85%] h-auto xl:h-[95%] rounded-3xl outline-none">
               <img
                 alt="Befor"
@@ -55,7 +55,7 @@ const BokaTransformation = () => {
           </div>
         </div>
       </Container>
-    </div>
+    </section>
   );
 };
 

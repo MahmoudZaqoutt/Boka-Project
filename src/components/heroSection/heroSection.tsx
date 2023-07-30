@@ -13,8 +13,8 @@ import FormOfHeroSection from "../Shared/FormOfHeroSection/FormOfHeroSection";
 
 const HeroSection = () => {
   return (
-    <div
-      className="h-[630px] background-I bg-cover bg-center  bg-no-repeat  "
+    <section
+      className="h-[680px] background-I bg-cover bg-center  bg-no-repeat  "
       style={{ backgroundImage: `url(${heroImg})` }}
     >
       <Topheader />
@@ -27,7 +27,7 @@ const HeroSection = () => {
         <form>
           <div className="flex flex-col lg:flex-row gap-3 items-center justify-center mt-7 sm:mt-14 md:mt-0">
             <div className="flex lg:flex-row flex-col w-[80%]  lg:w-[504px] lg:h-[60px] items-center lg:bg-white font-semibold gap-3 border-l-stone-50 rounded-md	">
-              <div className="flex lg:flex-col w-[100%] lg:w-[95px] h-[50px] lg:h-[44px] pl-3 bg-white rounded-xl	 ">
+              <div className="flex lg:flex-col w-full lg:w-[95px] h-[50px] lg:h-[44px] pl-3 bg-white !rounded-xl	 ">
                 <FormOfHeroSection
                   className="flex items-center w-[98%] lg:w-[89px] h-[50px] lg:h-[44px]  gap-x-2 "
                   label="At home"
@@ -35,22 +35,22 @@ const HeroSection = () => {
                   type="checkbox"
                 />
                 <FormOfHeroSection
-                  className="flex items-center w-[100%] lg:w-[82px] h-[50px] lg:h-[44px] gap-x-2 bg-white border-l-2 lg:border-none  pl-3 lg:pl-0"
+                  className="flex items-center w-full lg:w-[82px] h-[50px] lg:h-[44px] gap-x-2 bg-white border-l-2 lg:border-none  pl-3 lg:pl-0 rounded-r-xl"
                   label="Business"
                   inputClassName="lg:mr-1 accent-orange-400 scale-150"
                   type="checkbox"
                 />
               </div>
 
-              <div className="flex lg:flex-row bg-white w-[100%] lg:w-auto rounded-xl	">
+              <div className="flex lg:flex-row bg-white w-full lg:w-auto rounded-xl	">
                 <FormOfHeroSection
-                  className="flex items-center w-[100%] lg:w-[89px] h-[50px] lg:h-[44px]  gap-x-2 lg:border-l-2 pl-2"
+                  className="flex items-center w-full lg:w-[89px] h-[50px] lg:h-[44px]  gap-x-2 lg:border-l-2 pl-2 "
                   icon={<BsCalendarDate className="text-2xl" />}
                   label="Today"
                 />
 
                 <FormOfHeroSection
-                  className="flex items-center w-[100%] lg:w-[82px] h-[50px] lg:h-[44px] gap-x-2 bg-white border-l-2 pl-2"
+                  className="flex items-center w-full lg:w-[82px] h-[50px] lg:h-[44px] gap-x-2 bg-white border-l-2 pl-2 rounded-r-xl"
                   icon={<WiTime9 className="text-2xl" />}
                   label="Now"
                 />
@@ -60,7 +60,7 @@ const HeroSection = () => {
                 inputClassName="w-[118px] outline-none"
                 type="text"
                 icon={<FaMapMarkerAlt className="text-2xl" />}
-                className="flex items-center lg:w-[200px] lg:rounded-none w-[100%] gap-x-2  rounded-xl	 h-[60px] lg:h-[44px] bg-white border-l-2 pl-2"
+                className="flex items-center lg:w-[200px] lg:rounded-none w-full gap-x-2  rounded-xl	 h-[60px] lg:h-[44px] bg-white border-l-2 pl-2"
               />
             </div>
 
@@ -75,7 +75,7 @@ const HeroSection = () => {
             <div className="lg:w-auto w-[80%] rounded-xl">
               <Button
                 type="submit"
-                classname="font-semibold w-full	lg:w-[120px] h-[60px] bg-orange-400 border-2 border-orange-400 rounded	hover:bg-orange-300 ease-in duration-150	rounded-md"
+                classname="font-semibold text-white w-full	lg:w-[120px] h-[60px] bg-orange-400 border-2 border-orange-400 rounded-xl	hover:bg-orange-300 ease-in duration-150	rounded-md"
                 label="Search"
               />
             </div>
@@ -90,7 +90,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -3,5 +3,4 @@ export interface IPropsTopHeaderList {
   options: any[];
   title?: string;
   classNameOfLI?: string;
- 
 }

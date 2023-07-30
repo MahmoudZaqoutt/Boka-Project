@@ -5,4 +5,11 @@ export interface IPropsSlide {
   children?: any;
   className?: string;
   Images?: any[];
+  name?: string;
+  services?: any[];
+  price?: string | number;
+  categoryId?: number;
+  rating?: number;
+  address?: string;
+  handleChange?: any;
 }

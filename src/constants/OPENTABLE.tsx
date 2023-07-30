@@ -1,18 +1,6 @@
 export const OPENTABLE = [
-  {
-    content: "About Us",
-    href: "/",
-  },
-  {
-    content: "Blog",
-    href: "/",
-  },
-  {
-    content: "Careers",
-    href: "/",
-  },
-  {
-    content: "Press",
-    href: "/",
-  },
+  { id: 1, content: "About Us", href: "/" },
+  { id: 2, content: "Blog", href: "/" },
+  { id: 3, content: "Careers", href: "/" },
+  { id: 4, content: "Press", href: "/" },
 ];

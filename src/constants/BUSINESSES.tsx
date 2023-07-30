@@ -1,10 +1,4 @@
 export const BUSINESSES = [
-  {
-    content: "Delight more diners",
-    href: "/",
-  },
-  {
-    content: "Open for Business Blog",
-    href: "/",
-  },
+  { id: 1, content: "Delight more diners", href: "/" },
+  { id: 2, content: "Open for Business Blog", href: "/" },
 ];

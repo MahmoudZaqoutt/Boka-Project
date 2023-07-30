@@ -1,21 +1,29 @@
-import React from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Body } from "../Typography";
 import { Link } from "react-router-dom";
-// @ts-ignore
-import img from "../../assets/Rectangle 14.png";
-// @ts-ignore
-import img1 from "../../assets/Rectangle 15.png";
-// @ts-ignore
-import heroImg from "../../assets/Rectangle14.png";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import PopularCategoryCard from "./PopularCategoryCard/PopularCategoryCard";
-import { POPULAR_CATEGORY } from "../../constants/PopularCategory";
 import Container from "../Shared/Container/Container";
+import axios from "axios";
+import { className } from "../../interfaces/props/IPropsPopularCategoryCard";
 
 const PopularCategory = () => {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get(
+          "https://api.dev.boka.co/business-management/lookups/business-categories?limit=5"
+        );
+        setData(res.data.data);
+      } catch (error: any) {
+        setError(error.message);
+      }
+    })();
+  }, []);
   return (
     <Container>
-      <div className="pb-[80px] mt-[50px]">
+      <section className="pb-[80px] mt-[50px] ">
         <div className="flex justify-between items-center">
           <Body
             content="Popular Category"
@@ -29,28 +37,29 @@ const PopularCategory = () => {
           </Link>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-          <PopularCategoryCard
-            className="bg-cover bg-center  bg-no-repeat w-[90%] xl:w-[729px] h-[300px] xl:h-[390px]  hover:scale-105 ease-in-out duration-150 rounded-2xl flex  justify-between items-end pr-10 pb-7 pl-10  text-white"
-            content="Manicure"
-            backgroundImage={heroImg}
-            NoOfBusiness="350+"
-            href={"/"}
-          />
-
-          <div className="grid grid-cols-2 gap-[15px] xl:gap-[30px] w-[80%] xl:w-auto ">
-            {POPULAR_CATEGORY.map((item) => (
-              <PopularCategoryCard
-                content={item.content}
-                backgroundImage={item.backgroundImage}
-                NoOfBusiness={item.NoOfBusiness}
-                className={item.className}
-                href={item.href}
-              />
+        {error ? (
+          <div className="w-full text-center text-4xl text-red-500 font-bold">
+            {error}...
+          </div>
+        ) : (
+          <div className=" grid grid-cols-2 grid-rows-4 lg:grid-cols-4 lg:grid-rows-2   mx-auto gap-[15px] xl:gap-[30px] xl:!w-full  w-[90%] ">
+            {data.map((item: any, index) => (
+              <Fragment key={item.id}>
+                <PopularCategoryCard
+                  content={item.nameEn}
+                  backgroundImage={item.thumbnailUrl}
+                  usedNo={item.usedNo}
+                  className={
+                    index === 0 ? className.bigCard : className.smallCard
+                  }
+                  href={item.href}
+                />
+              </Fragment>
             ))}
           </div>
-        </div>
-      </div>
+          // </div>
+        )}
+      </section>
     </Container>
   );
 };

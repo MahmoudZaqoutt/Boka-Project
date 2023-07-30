@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "./components/HeroSection/HeroSection";
-import SliderSection from "./components/ServicesSliderSection/ServicesSliderSection";
+import SliderSection from "./components/CategoriesSliderSection/CategoriesSliderSection";
 import SpecialOfferSection from "./components/SpecialOfferSection/SpecialOfferSection";
 import FeaturedBusinessesSection from "./components/FeaturedBusinessesSection/FeaturedBusinessesSection";
 import PopularBusinessesSection from "./components/PopularBusinessesSection/PopularBusinessesSection";

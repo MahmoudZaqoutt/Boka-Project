@@ -7,8 +7,6 @@ const TimeSlider = () => {
   return (
     <div className="flex gap-x-2 mt-[12px] w-[95%] ">
       <Swiper
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
         scrollbar={{ draggable: true }}
         modules={[Navigation]}
         slidesPerView={4}

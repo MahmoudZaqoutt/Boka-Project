@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @import url("https://fonts.googleapis.com/css2?family=Avenir:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap"); */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -25,16 +26,15 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-.child {
-  width: calc(120px) !important;
-}
-/* .childCard {
-  width: calc(160px) !important;
-} */
-.child img {
-  margin-bottom: 20px;
+
+.card:hover .love {
+  display: block;
 }
 
-.splide__pagination {
-  display: none;
+.card:hover .endSlider {
+  display: block;
+}
+
+.PopularCategoryCard:hover .arrowOfPopularCategoryCard {
+  display: block;
 }
