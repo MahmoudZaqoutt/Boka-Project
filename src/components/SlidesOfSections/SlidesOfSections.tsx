@@ -128,7 +128,7 @@ const SlidesOfSections = (props: IPropsSlide) => {
               }}
             >
               {data.map((data: any) => (
-                <SwiperSlide key={data.id}>
+                <SwiperSlide key={data.id} className="!w-[18.5rem]">
                   <Card
                     name={data.nameEn}
                     id={data.id + (props.id ? props.id : 100)}

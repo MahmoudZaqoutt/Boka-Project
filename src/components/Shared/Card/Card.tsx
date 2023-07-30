@@ -24,17 +24,14 @@ const Card = (props: IPropsSlide) => {
     setValue(e.target.value);
   };
   return (
-    <div className="card border-[1px]     border-red-50 bg-white !rounded-xl md:hover:-translate-y-2 	md:mt-2 ease-in-out duration-100 ">
+    <div className="card border-[1px]  !w-[300px] h-[445px]  border-red-50 bg-white !rounded-xl md:hover:-translate-y-2 	md:mt-2 ease-in-out duration-100 ">
       <div className="flex  relative ">
         <ImageSlider Images={props.Images} id={props.id} />
       </div>
 
       <div className="text-center  ">
         <div className="flex items-center gap-1  font-semibold !w-full ">
-          <Body
-            content={props.name ? props.name : ""}
-            classnameContent="truncate"
-          />
+          <Body content={props.name ? props.name : ""} classnameContent="" />
           <AiTwotoneStar className="text-orange-500" />{" "}
           {Math.round(props.rating ? props.rating : 0)}
         </div>
