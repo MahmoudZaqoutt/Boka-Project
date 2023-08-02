@@ -12,6 +12,7 @@ import BrandSection from "./components/BrandSection/BrandSection";
 import Footer from "./components/Footer/Footer";
 import ExploringBusinessesSection from "./components/ExploringBusinessesSection/ExploringBusinessesSection";
 import MoreBusinessSection from "./components/MoreBusinessSection/MoreBusinessSection";
+import BasicTooltip from "./components/test";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
       <ExploringBusinessesSection />
       <MoreBusinessSection />
       <Footer />
+
+      <BasicTooltip />
     </div>
   );
 }

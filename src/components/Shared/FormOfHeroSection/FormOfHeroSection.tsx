@@ -1,4 +1,3 @@
-import React from "react";
 import { IPropsFormOfHeroSection } from "../../../interfaces/props/IPropsFormOfHeroSection";
 
 const FormOfHeroSection = (props: IPropsFormOfHeroSection) => {
@@ -16,7 +15,13 @@ const FormOfHeroSection = (props: IPropsFormOfHeroSection) => {
       ) : (
         ""
       )}
-      {props.label ? <label htmlFor={props.label}>{props.label}</label> : ""}
+      {props.label ? (
+        <label htmlFor={props.label} className={props.labelClassName}>
+          {props.label}
+        </label>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

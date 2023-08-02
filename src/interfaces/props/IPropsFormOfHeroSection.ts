@@ -5,4 +5,5 @@ export interface IPropsFormOfHeroSection {
   type?: string;
   inputClassName?: string;
   placeholder?: string;
+  labelClassName?: string;
 }

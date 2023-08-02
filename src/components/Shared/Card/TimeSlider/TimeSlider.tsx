@@ -5,13 +5,13 @@ import { Navigation } from "swiper";
 import Button from "../../Button/button";
 const TimeSlider = () => {
   return (
-    <div className="flex gap-x-2 mt-[12px] w-[95%] ">
+    <div className="mt-[12px] w-[95%] ">
       <Swiper
         scrollbar={{ draggable: true }}
         modules={[Navigation]}
         slidesPerView={4}
         slidesPerGroup={1}
-        spaceBetween={80}
+        spaceBetween={85}
       >
         <SwiperSlide>
           <Button

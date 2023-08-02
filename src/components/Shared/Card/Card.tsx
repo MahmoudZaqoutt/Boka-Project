@@ -12,27 +12,36 @@ import ImageSlider from "./ImageSlider/ImageSlider";
 import FormOfHeroSection from "../FormOfHeroSection/FormOfHeroSection";
 import "../../../styles/globals.css";
 import { useState } from "react";
+
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
+import Tooltip from "@mui/material/Tooltip";
+import { IconButton } from "@mui/material";
+
 const Card = (props: IPropsSlide) => {
   const services: any[] = [];
   props.services?.map((item) =>
     services.push({ id: item.id, lang: item.nameEn })
   );
 
-  const [value, setValue] = useState(services[0]);
+  const [value, setValue] = useState(services[0].lang);
 
   const handleChange = (e: any) => {
     setValue(e.target.value);
   };
   return (
-    <div className="card border-[1px]  !w-[300px] h-[445px]  border-red-50 bg-white !rounded-xl md:hover:-translate-y-2 	md:mt-2 ease-in-out duration-100 ">
+    <div className="overflow-hidden  card border-[1px]  !w-[300px] h-[445px]  border-red-50 bg-white !rounded-xl md:hover:-translate-y-2 	md:mt-2 ease-in-out duration-100 ">
       <div className="flex  relative ">
         <ImageSlider Images={props.Images} id={props.id} />
       </div>
 
-      <div className="text-center  ">
+      <div className="text-center px-2 ">
         <div className="flex items-center gap-1  font-semibold !w-full ">
           <Body content={props.name ? props.name : ""} classnameContent="" />
-          <AiTwotoneStar className="text-orange-500" />{" "}
+          <AiTwotoneStar className="text-orange-500" />
           {Math.round(props.rating ? props.rating : 0)}
         </div>
         <Button
@@ -40,11 +49,17 @@ const Card = (props: IPropsSlide) => {
           label="Business"
           classname="m-auto w-[100%] font-semibold  h-[31px] mt-[8px] rounded-xl text-orange-400 border-orange-400 border-2 hover:bg-orange-200 hover:text-black ease-in-out duration-150"
         />
-        <FormOfHeroSection
-          label={props.address}
-          icon={<FaMapMarkerAlt className="w-[12px] h-[14.99px]" />}
-          className="flex items-center gap-1  mt-[12px] "
-        />
+        <Tooltip title={props.address} className=" !w-full">
+          <IconButton className="!text-sm 	!text-black !rounded-none">
+            <FormOfHeroSection
+              labelClassName="truncate "
+              label={`${props.address}...`}
+              icon={<FaMapMarkerAlt className="w-[12px] h-[14.99px] -ml-4" />}
+              className="flex items-center gap-1  mt-[10px] max-w-full"
+            />
+          </IconButton>
+        </Tooltip>
+
         <DropDownList
           onChange={handleChange}
           options={services}
