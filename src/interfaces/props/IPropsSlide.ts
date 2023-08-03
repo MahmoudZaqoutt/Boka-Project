@@ -12,4 +12,6 @@ export interface IPropsSlide {
   rating?: number;
   address?: string;
   handleChange?: any;
+  isLoading?: boolean;
+  sections?: any;
 }

@@ -11,29 +11,36 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Container from "../Shared/Container/Container";
 import axios from "axios";
+import { Skeleton, Stack } from "@mui/material";
 
 const SlidesOfSections = (props: IPropsSlide) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (swiper: any) => {
     setIsBeginning(swiper.isBeginning);
     setIsEnd(swiper.isEnd);
   };
   useEffect(() => {
+    setIsLoading(true);
+
     (async () => {
       try {
+        setIsLoading(true);
         const res = await axios.get(
           `  https://api.dev.boka.co/business-management/businesses?limit=10&categoryId=${props.categoryId}`
         );
         setData(res.data.data);
+        setIsLoading(false);
       } catch (error: any) {
         setError(error.message);
         console.log(error.message);
       }
     })();
-  }, [props.categoryId]);
+  }, []);
 
   return (
     <Container>
@@ -127,18 +134,62 @@ const SlidesOfSections = (props: IPropsSlide) => {
                 },
               }}
             >
-              {data.map((data: any) => (
-                <SwiperSlide key={data.id} className="!w-[18.5rem]">
-                  <Card
-                    name={data.nameEn}
-                    id={data.id + (props.id ? props.id : 100)}
-                    Images={data.businessImages}
-                    services={data.services}
-                    rating={data.rating}
-                    address={data.address[0].formatted}
-                  />
-                </SwiperSlide>
-              ))}
+              {isLoading ? (
+                <>
+                  <SwiperSlide className="!w-[18.5rem]">
+                    <div className="overflow-hidden  card border-[1px]  !w-[300px] h-[445px]  border-red-50 bg-white !rounded-xl md:hover:-translate-y-2 	md:mt-2 ease-in-out duration-100 ">
+                      <Skeleton
+                        animation="wave"
+                        variant="rectangular"
+                        className="!h-full"
+                      />
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide className="!w-[18.5rem]">
+                    <div className="overflow-hidden  card border-[1px]  !w-[300px] h-[445px]  border-red-50 bg-white !rounded-xl md:hover:-translate-y-2 	md:mt-2 ease-in-out duration-100 ">
+                      <Skeleton
+                        animation="wave"
+                        variant="rectangular"
+                        className="!h-full"
+                      />
+                    </div>
+                  </SwiperSlide>{" "}
+                  <SwiperSlide className="!w-[18.5rem]">
+                    <div className="overflow-hidden  card border-[1px]  !w-[300px] h-[445px]  border-red-50 bg-white !rounded-xl md:hover:-translate-y-2 	md:mt-2 ease-in-out duration-100 ">
+                      <Skeleton
+                        animation="wave"
+                        variant="rectangular"
+                        className="!h-full"
+                      />
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide className="!w-[18.5rem]">
+                    <div className="overflow-hidden  card border-[1px]  !w-[300px] h-[445px]  border-red-50 bg-white !rounded-xl md:hover:-translate-y-2 	md:mt-2 ease-in-out duration-100 ">
+                      <Skeleton
+                        animation="wave"
+                        variant="rectangular"
+                        className="!h-full"
+                      />
+                    </div>
+                  </SwiperSlide>
+                </>
+              ) : (
+                <>
+                  {data.map((data: any) => (
+                    <SwiperSlide key={data.id} className="!w-[18.5rem]">
+                      <Card
+                        isLoading={isLoading}
+                        name={data.nameEn}
+                        id={data.id + (props.id ? props.id : 100)}
+                        Images={data.businessImages}
+                        services={data.services}
+                        rating={data.rating}
+                        address={data.address[0].formatted}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </>
+              )}
             </Swiper>
           </div>
         </div>

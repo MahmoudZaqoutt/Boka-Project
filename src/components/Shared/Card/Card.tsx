@@ -26,7 +26,6 @@ const Card = (props: IPropsSlide) => {
   props.services?.map((item) =>
     services.push({ id: item.id, lang: item.nameEn })
   );
-
   const [value, setValue] = useState(services[0].lang);
 
   const handleChange = (e: any) => {

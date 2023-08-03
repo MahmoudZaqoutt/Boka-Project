@@ -12,7 +12,7 @@ import { BUSINESSES } from "../../constants/BUSINESSES";
 import { JOIN_US_ON } from "../../constants/JOIN_US_ON";
 import { FOOTER_LINKS } from "../../constants/FOOTER_LINKS";
 
-const Footer = () => {
+const Brands = () => {
   return (
     <section className="bg-[#F9F9F9] ">
       <Container>
@@ -97,4 +97,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Brands;

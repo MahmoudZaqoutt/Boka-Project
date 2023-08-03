@@ -11,7 +11,7 @@ import Header from "../Header/Header";
 import Topheader from "../Topheader/Topheader";
 import FormOfHeroSection from "../Shared/FormOfHeroSection/FormOfHeroSection";
 
-const HeroSection = () => {
+const Homesearch = () => {
   return (
     <section
       className="h-[680px] background-I bg-cover bg-center  bg-no-repeat  "
@@ -94,4 +94,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Homesearch;
